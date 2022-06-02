@@ -32,9 +32,10 @@ namespace WebAPI
         {
 
             services.AddControllers();
-            services.AddSingleton<IProductService, ProductManager>();
-            services.AddSingleton<IProductDal, EfProductDal>();
-
+            //services.AddSingleton<IProductService, ProductManager>();
+            //services.AddSingleton<IProductDal, EfProductDal>();
+            //services.AddSingleton<ICategoryService, CategoryManager>();
+            //services.AddSingleton<ICategoryDal , EfCategoryDal>();
 
 
             services.AddSwaggerGen(c =>

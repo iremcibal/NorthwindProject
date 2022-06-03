@@ -24,12 +24,14 @@ namespace Business.DependencyResolvers.Autofac
             builder.RegisterType<EfCategoryDal>().As<ICategoryDal>().SingleInstance();
 
 
+
             var assembly = System.Reflection.Assembly.GetExecutingAssembly();
             builder.RegisterAssemblyTypes(assembly).AsImplementedInterfaces()
                 .EnableInterfaceInterceptors(new ProxyGenerationOptions()
                 {
                     Selector = new AspectInterceptorSelector()
                 }).SingleInstance();
+
         }
 
     }

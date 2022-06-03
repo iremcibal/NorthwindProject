@@ -3,7 +3,6 @@ using Business.Constants;
 using Business.ValidationRules.FluentValidation;
 using Core.Aspects.Autofac.Validation;
 using Core.CrossCuttingConcerns.Validation;
-using Core.Utilities.Business;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
@@ -33,6 +32,7 @@ namespace Business.Concrete
         {
 
             //ValidationTool.Validate(new ProductValidator(), product);
+
             IResult result = BusinessRules.Run(CheckIfProductCountOfCategoryCorrect(product.CategoryId),
                 CheckIfProductNameExists(product.ProductName),
                 CheckIfCategoryCount());
@@ -42,6 +42,9 @@ namespace Business.Concrete
                 return result;
             }
             
+
+
+
             _productDal.Add(product);
             return new SuccessResult(Messages.ProductAdded);
            

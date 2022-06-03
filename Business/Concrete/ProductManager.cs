@@ -18,12 +18,13 @@ namespace Business.Concrete
     public class ProductManager : IProductService
     {   //Business -> Soyut sınıftsn erişiyor
         IProductDal _productDal;
-
-        public ProductManager(IProductDal productDal)
+        ICategoryService _categoryService;
+        public ProductManager(IProductDal productDal,ICategoryService categoryService)
         {
             _productDal = productDal;
+            _categoryService = categoryService;
+            
         }
-
 
 
         [ValidationAspect(typeof(ProductValidator))]
@@ -32,9 +33,21 @@ namespace Business.Concrete
 
             //ValidationTool.Validate(new ProductValidator(), product);
 
-            _productDal.Add(product);
+            IResult result = BusinessRules.Run(CheckIfProductCountOfCategoryCorrect(product.CategoryId),
+                CheckIfProductNameExists(product.ProductName),
+                CheckIfCategoryCount());
 
+            if (result != null)
+            {
+                return result;
+            }
+            
+
+
+
+            _productDal.Add(product);
             return new SuccessResult(Messages.ProductAdded);
+           
         }
         public IDataResult<List<Product>> GetAll()
         {
@@ -64,5 +77,38 @@ namespace Business.Concrete
 
 
 
+        private IResult CheckIfProductCountOfCategoryCorrect(int categoryId)
+        {
+            var result = _productDal.GetAll(p => p.CategoryId == categoryId).Count;
+            if (result >= 15)
+            {
+                return new ErrorResult(Messages.ProductCountOfCategoryError);
+            }
+            return new SuccessResult();
+        }
+
+        private IResult CheckIfProductNameExists(string productName)
+        {
+            var result = _productDal.GetAll(p => p.ProductName == productName).Any();
+
+            if(result)
+            {
+                return new ErrorResult(Messages.ProductNameAlreadyExists);
+            }
+            return new SuccessResult();
+        }
+
+        //Buraya yazılmasının sebebi; tek başına bir servis değil,
+        //Product için categoryservices'in nasıl yorumladığı ile alakalı.
+        private IResult CheckIfCategoryCount()
+        {
+            var result = _categoryService.GetAll();
+
+            if (result.Data.Count >= 15)
+            {
+                return new ErrorResult(Messages.CategoryLimitExceded);
+            }
+            return new SuccessResult();
+        }
     }
 }

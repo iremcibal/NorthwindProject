@@ -21,5 +21,8 @@ namespace Business.Constants
         internal static string OrderAdded = "Müşteri Eklendi";
 
         internal static string CategoryAdded = "Kategori Eklendi";
+        internal static string ProductCountOfCategoryError;
+        internal static string ProductNameAlreadyExists;
+        internal static string CategoryLimitExceded;
     }
 }

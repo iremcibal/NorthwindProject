@@ -50,7 +50,7 @@ namespace WebAPI
             });
 
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
-            //Biz jwt yapýmýzý kullanacaðýz belirtiyoruz
+            //Biz jwt yapï¿½mï¿½zï¿½ kullanacaï¿½ï¿½z belirtiyoruz
             var tokenOptions = Configuration.GetSection("TokenOptions").Get<TokenOptions>();
 
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
@@ -95,7 +95,8 @@ namespace WebAPI
                 endpoints.MapControllers();
             });
 
-            //Hangisinin sýrayla devreye girmesini istediðimizi belirtiyoruz
+            //Hangisinin sï¿½rayla devreye girmesini istediï¿½imizi belirtiyoruz
+
         }
     }
 }

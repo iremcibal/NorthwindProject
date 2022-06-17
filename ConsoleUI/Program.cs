@@ -8,7 +8,7 @@ namespace ConsoleUI
     {
         static void Main(string[] args)
         {
-            ProductTest();
+            //ProductTest();
 
             //CategoryTest();
 
@@ -33,14 +33,14 @@ namespace ConsoleUI
             }
         }
 
-        private static void ProductTest()
-        {
-            ProductManager productManager = new ProductManager(new EfProductDal());
+        //private static void ProductTest()
+        //{
+        //    ProductManager productManager = new ProductManager(new EfProductDal());
 
-            foreach (var product in productManager.GetProductDetails().Data)
-            {
-                Console.WriteLine(product.ProductName + " -- " + product.CategoryName);
-            }
-        }
+        //    foreach (var product in productManager.GetProductDetails().Data)
+        //    {
+        //        Console.WriteLine(product.ProductName + " -- " + product.CategoryName);
+        //    }
+        //}
     }
 }

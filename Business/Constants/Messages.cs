@@ -1,6 +1,8 @@
-﻿using System;
+﻿using Core.Entities.Concrete;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -18,11 +20,19 @@ namespace Business.Constants
 
         public static string ProductsListed = "Ürün Listelendi";
 
-        internal static string OrderAdded = "Müşteri Eklendi";
+        public static string OrderAdded = "Müşteri Eklendi";
 
-        internal static string CategoryAdded = "Kategori Eklendi";
-        internal static string ProductCountOfCategoryError;
-        internal static string ProductNameAlreadyExists;
-        internal static string CategoryLimitExceded;
+        public static string CategoryAdded = "Kategori Eklendi";
+        public static string ProductCountOfCategoryError;
+        public static string ProductNameAlreadyExists;
+        public static string CategoryLimitExceded;
+        public static string AuthorizationDenied;
+        internal static string UserRegistered;
+        internal static User UserNotFound;
+        internal static User PasswordError;
+        internal static string SuccessfulLogin;
+        internal static string UserAlreadyExists;
+        internal static string AccessTokenCreated;
+
     }
 }

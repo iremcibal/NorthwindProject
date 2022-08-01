@@ -52,7 +52,8 @@ namespace WebAPI
             });
 
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
-            //Biz jwt yapýmýzý kullanacaðýz belirtiyoruz
+            //Biz jwt yapï¿½mï¿½zï¿½ kullanacaï¿½ï¿½z belirtiyoruz
+
             var tokenOptions = Configuration.GetSection("TokenOptions").Get<TokenOptions>();
 
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
@@ -70,13 +71,14 @@ namespace WebAPI
                         };
                     });
 
-            //Ýstediðim kadar modül ekleyebileyim 
-            //Yarýn bir gün coreModule gibi farklý modüller de oluþturabilir
-            //injectionlar için ve buraya ekleyebiliriz
+            //ï¿½stediï¿½im kadar modï¿½l ekleyebileyim 
+            //Yarï¿½n bir gï¿½n coreModule gibi farklï¿½ modï¿½ller de oluï¿½turabilir
+            //injectionlar iï¿½in ve buraya ekleyebiliriz
             services.AddDependencyResolvers(new ICoreModule[]
             {
                 new CoreModule()
             });
+
 
 
         }
@@ -105,7 +107,8 @@ namespace WebAPI
                 endpoints.MapControllers();
             });
 
-            //Hangisinin sýrayla devreye girmesini istediðimizi belirtiyoruz
+            //Hangisinin sï¿½rayla devreye girmesini istediï¿½imizi belirtiyoruz
+
         }
     }
 }

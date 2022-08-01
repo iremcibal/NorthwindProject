@@ -1,5 +1,7 @@
 using Business.Abstract;
 using Business.Concrete;
+using Core.DependencyResolvers;
+using Core.Extensions;
 using Core.Utilities.IoC;
 using Core.Utilities.Security.Encryption;
 using Core.Utilities.Security.JWT;
@@ -51,6 +53,7 @@ namespace WebAPI
 
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             //Biz jwt yap�m�z� kullanaca��z belirtiyoruz
+
             var tokenOptions = Configuration.GetSection("TokenOptions").Get<TokenOptions>();
 
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
@@ -67,7 +70,16 @@ namespace WebAPI
                             IssuerSigningKey = SecurityKeyHelper.CreateSecurityKey(tokenOptions.SecurityKey)
                         };
                     });
-            ServiceTool.Create(services);
+
+            //�stedi�im kadar mod�l ekleyebileyim 
+            //Yar�n bir g�n coreModule gibi farkl� mod�ller de olu�turabilir
+            //injectionlar i�in ve buraya ekleyebiliriz
+            services.AddDependencyResolvers(new ICoreModule[]
+            {
+                new CoreModule()
+            });
+
+
 
         }
 

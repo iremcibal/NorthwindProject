@@ -35,6 +35,10 @@ namespace Business.Concrete
         {
 
             //ValidationTool.Validate(new ProductValidator(), product);
+
+
+
+
             IResult result = BusinessRules.Run(CheckIfProductCountOfCategoryCorrect(product.CategoryId),
                 CheckIfProductNameExists(product.ProductName),
                 CheckIfCategoryCount());
@@ -44,6 +48,9 @@ namespace Business.Concrete
                 return result;
             }
             
+
+
+
             _productDal.Add(product);
             return new SuccessResult(Messages.ProductAdded);
            

@@ -45,11 +45,13 @@ namespace WebAPI
             //services.AddSingleton<ICategoryService, CategoryManager>();
             //services.AddSingleton<ICategoryDal , EfCategoryDal>();
 
-
+            services.AddCors();
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "WebAPI", Version = "v1" });
             });
+
+            
 
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             //Biz jwt yapýmýzý kullanacaðýz belirtiyoruz
@@ -91,6 +93,8 @@ namespace WebAPI
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "WebAPI v1"));
             }
+            //Bana bu adresten istek gelirse izin ver
+            app.UseCors(builder=>builder.WithOrigins("http://localhost:4200/").AllowAnyHeader().AllowAnyOrigin().AllowAnyMethod());
 
             app.UseHttpsRedirection();
 

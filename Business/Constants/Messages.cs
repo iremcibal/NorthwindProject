@@ -22,6 +22,7 @@ namespace Business.Constants
 
         public static string OrderAdded = "Müşteri Eklendi";
 
+
         public static string CategoryAdded = "Kategori Eklendi";
         public static string ProductCountOfCategoryError;
         public static string ProductNameAlreadyExists;
@@ -33,5 +34,6 @@ namespace Business.Constants
         internal static string SuccessfulLogin;
         internal static string UserAlreadyExists;
         internal static string AccessTokenCreated;
+
     }
 }

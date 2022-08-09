@@ -50,6 +50,7 @@ namespace WebAPI.Controllers
             return BadRequest(result);
         }
 
+
         [HttpGet("getbyid")]
         public IActionResult GetByCategoryId(int categoryId)
         {
@@ -60,5 +61,6 @@ namespace WebAPI.Controllers
             }
             return BadRequest(result);
         }
+
     }
 }

@@ -39,6 +39,7 @@ namespace Business.Concrete
 
 
 
+
             IResult result = BusinessRules.Run(CheckIfProductCountOfCategoryCorrect(product.CategoryId),
                 CheckIfProductNameExists(product.ProductName),
                 CheckIfCategoryCount());
@@ -48,6 +49,8 @@ namespace Business.Concrete
                 return result;
             }
             
+
+
 
 
 

@@ -22,6 +22,7 @@ namespace Business.Constants
 
         public static string OrderAdded = "Müşteri Eklendi";
 
+
         public static string CategoryAdded = "Kategori Eklendi";
         public static string ProductCountOfCategoryError;
         public static string ProductNameAlreadyExists;
